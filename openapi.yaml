@@ -1,0 +1,1376 @@
+---
+
+openapi: 3.1.0
+info:
+  title: QNAP API
+  version: 0.0.1
+
+paths:
+  /api/autovoip/oui/create:
+    post:
+      summary: Add an AutoVOIP OUI
+      tags:
+        - autovoip
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                oui:
+                  type: string
+
+  /api/autovoip/oui/delete:
+    post:
+      summary: Delete an AutoVOIP OUI
+      tags:
+        - autovoip
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                oui:
+                  type: string
+
+  /api/autovoip/oui/get:
+    post:
+      summary: Get the AutoVOIP OUI
+      tags:
+        - autovoip
+
+  /api/autovoip/state/get:
+    post:
+      summary: Get the AutoVOIP state
+      tags:
+        - autovoip
+
+  /api/autovoip/state/set:
+    post:
+      summary: Set the AutoVOIP state
+      tags:
+        - autovoip
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                gstate:
+                  type: integer
+                  minimum: 0
+
+  /api/cfg/default:
+    post:
+      summary: Get the default configuration
+      tags:
+        - cfg
+
+  /api/cfg/upload:
+    post:
+      summary: Upload a new configuration
+      tags:
+        - cfg
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+
+  /api/cfg/validate:
+    post:
+      summary: Validate the current configuration
+      tags:
+        - cfg
+
+  /api/dos/get:
+    post:
+      summary: Get the DoS configuration
+      tags:
+        - dos
+
+  /api/dos/set:
+    post:
+      summary: Set the DoS configuratoin
+      tags:
+        - dos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                macLand:
+                  type: integer
+                  minimum: 0
+                ipDaEqSa:
+                  type: integer
+                  minimum: 0
+                tcpDpEqSp:
+                  type: integer
+                  minimum: 0
+                udpDpEqSp:
+                  type: integer
+                  minimum: 0
+                tcpNullScan:
+                  type: integer
+                  minimum: 0
+                tcpXmasScan:
+                  type: integer
+                  minimum: 0
+                tcpSynFinScan:
+                  type: integer
+                  minimum: 0
+                tcpSync:
+                  type: integer
+                  minimum: 0
+                tcpHdrFrag:
+                  type: integer
+                  minimum: 0
+                ipv4IcmpFrag:
+                  type: integer
+                  minimum: 0
+                ipv6IcmpFrag:
+                  type: integer
+                  minimum: 0
+                icmp4LongPing:
+                  type: integer
+                  minimum: 0
+                icmp6LongPing:
+                  type: integer
+                  minimum: 0
+
+  /api/fw/data/get:
+    post:
+      summary: Get the firmware data
+      tags:
+        - fw
+
+  /api/fw/image/toggle:
+    post:
+      summary: Toggle the firmware image
+      tags:
+        - fw
+
+  /api/fw/upload:
+    post:
+      summary: Upload a new firmware
+      tags:
+        - fw
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+
+  /api/fw/version/set:
+    post:
+      summary: Set the firmware version
+      tags:
+        - fw
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                index: integer
+                verInfo: string
+
+  /api/host/add:
+    post:
+      summary: Add a host
+      tags:
+        - host
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ipv6:
+                  type: string
+                  oneOf:
+                    - const: 0
+                ipaddr:
+                  type: string
+                  format: ipv4
+
+  /api/host/delete:
+    post:
+      summary: Delete a host
+      tags:
+        - host
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ipv6:
+                  type: string
+                  oneOf:
+                    - const: 0
+                ipaddr:
+                  type: string
+                  format: ipv4
+
+  /api/host/get:
+    post:
+      summary: Get a host
+      tags:
+        - host
+
+  /api/host/state/set:
+    post:
+      summary: Set a host state
+      tags:
+        - host
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enable:
+                  type: integer
+                  minimum: 0
+
+  /api/intf/list/get:
+    post:
+      summary: Get a list of interfaces
+      tags:
+        - intf
+
+  /api/l2/table/count/get:
+    post:
+      summary: Get the L2 count table
+      tags:
+        - l2
+
+  /api/l2/table/get:
+    post:
+      summary: Get the L2 table
+      tags:
+        - l2
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mac:
+                  type: object
+                port:Id:
+                  type: object
+                vlan:
+                  type: object
+
+  /api/lag/create:
+    post:
+      summary: Create a link aggregation
+      tags:
+        - lag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                descr:
+                  type: string
+                  maxLength: 17
+                members:
+                  type: string
+                  pattern: ^(\d+)(,\s*\d+)*$
+
+  /api/lag/delete:
+    post:
+      summary: Delete a link aggregation
+      tags:
+        - lag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lag:
+                  type: integer
+                  minimum: 0
+
+
+  /api/lag/get:
+    post:
+      summary: Get a link aggregation
+      tags:
+        - lag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lag:
+                  type: integer
+                  minimum: 0
+
+  /api/lag/hash/get:
+    post:
+      summary: Get a link aggregation hash
+      tags:
+        - lag
+
+  /api/lag/hash/set:
+    post:
+      summary: Set a link aggregation hash
+      tags:
+        - lag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hash:
+                  type: string
+                  oneOf:
+                    - const: mac-da
+                    - const: mac-dasa
+                    - const: mac-dasa-vlan
+                    - const: mac-dasa-vlan-ip
+
+  /api/lag/intf/set:
+    post:
+      summary: Set a link aggregation interface
+      tags:
+        - lag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  minimum: 0
+                descr:
+                  type: string
+                members:
+                  type: string
+                  pattern: ^(\d+)(,\s*\d+)*$
+
+  /api/lag/portmap/get:
+    post:
+      summary: Get the link aggregation port map
+      tags:
+        - lag
+
+  /api/lbd/global/get:
+    post:
+      summary: Get the global loopback detection state
+      tags:
+        - lbd
+
+  /api/lbd/global/set:
+    post:
+      summary: Set the global loopback detection state
+      tags:
+        - lbd
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                globalEnabled:
+                  type: integer
+                  minimum: 0
+                txTime:
+                  type: integer
+                  minimum: 0
+                shutdownTime:
+                  type: integer
+                  minimum: 0
+
+  /api/lbd/port/get:
+    post:
+      summary: Get the loopback detection state of a port
+      tags:
+        - lbd
+
+  /api/lbd/port/set:
+    post:
+      summary: Set the loopback detection state of a port
+      tags:
+        - lbd
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+                enabled:
+                  type: integer
+                  minimum: 0
+                action:
+                  type: integer
+                  minimum: 0
+                transmit:
+                  type: integer
+                  minimum: 0
+
+  /api/mirror/delete:
+    post:
+      summary: Delete a port mirror
+      tags:
+        - mirror
+
+  /api/mirror/get:
+    post:
+      summary: Get a port mirror
+      tags:
+        - mirror
+
+  /api/mirror/set:
+    post:
+      summary: Set a port mirror
+      tags:
+        - mirror
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                destPort:
+                  type: integer
+                egressSrcPorts:
+                  type: array,
+                  items:
+                    type: integer
+                    minimum: 0
+                ingressSrcPorts:
+                  type: array,
+                  items:
+                    type: integer
+                    minimum: 0
+                egressSrcVLANs:
+                  type: array,
+                  items:
+                    type: integer
+                    minimum: 0
+                ingressSrcVLANs:
+                  type: array,
+                  items:
+                    type: integer
+                    minimum: 0
+
+  /api/port/admin/get:
+    post:
+      summary: Get the Admin port?
+      tags:
+        - port
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+
+  /api/port/get:
+    post:
+      summary: Get a port
+      tags:
+        - port
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+
+  /api/port/link/state/get:
+    post:
+      summary: Get the link state of a port
+      tags:
+        - port
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+
+  /api/port/list/get:
+    post:
+      summary: Get a list of the ports
+      tags:
+        - port
+
+  /api/port/phys/type/get:
+    post:
+      summary: Get the physical type of a port
+      tags:
+        - port
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+
+  /api/port/set:
+    post:
+      summary: Set the port details
+      tags:
+        - port
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+                description:
+                  type: string
+                admin:
+                  type: integer
+                  minimum: 0
+                autoneg:
+                  type: integer
+                  oneOf:
+                    - const: 0
+                    - const: 1
+                speed:
+                  type: integer
+                  minimum: 0
+                fdx:
+                  type: integer
+                  oneOf:
+                    - const: 0
+                    - const: 1
+                flow:
+                  type: integer
+                  minimum: 0
+
+  /api/port/speed/max/get:
+    post:
+      summary: Get the maximum speed of a port
+      tags:
+        - port
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+
+
+  /api/port/stats_err/get:
+    post:
+      summary: Get the stats/errors of a port
+      tags:
+        - port
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+
+
+  /api/port/stats_rst/set:
+    post:
+      summary: Reset the stats of a port
+      tags:
+        - port
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+
+  /api/port/stats/clear:
+    post:
+      summary: tba
+      tags:
+        - port
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: array
+                  items:
+                    type: integer
+                    minimum: 0
+
+  /api/port/stats/get:
+    post:
+      summary: Get the stats of a port / ports
+      tags:
+        - port
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+
+
+  /api/qos/dot1p/mapping/get:
+    post:
+      summary: Get the 802.1p QoS mappings
+      tags:
+        - qos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dot1p:
+                  type: integer
+                  minimum: 0
+
+  /api/qos/dot1p/mapping/set:
+    post:
+      summary: Set the 802.1p QoS mappings
+      tags:
+        - qos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dot1p:
+                  type: array
+                  items:
+                    type: string
+                    pattern: ^0x(?:[0-9]|[A-F]){2}$
+
+  /api/qos/dscp/mapping/get:
+    post:
+      summary: Get the 802.1p QoS mappings
+      tags:
+        - qos
+
+  /api/qos/dscp/mapping/set:
+    post:
+      summary: Set the DSCP QoS mappings
+      tags:
+        - qos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+
+  /api/qos/port/ratelimit/get:
+    post:
+      tags:
+        - qos
+      summary: Get the rate limit of a port
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+
+  /api/qos/port/ratelimit/set:
+    post:
+      summary: Set the rate limit of a port
+      tags:
+        - qos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+                ingress:
+                  type: object
+                  properties:
+                    admin:
+                      type: integer
+                      minimum: 0
+                    rate:
+                      type: integer
+                      minimum: 0
+                    unit:
+                      type: string
+                      oneOf:
+                        - const: pps
+                egress:
+                  type: object
+                  properties:
+                    admin:
+                      type: integer
+                      minimum: 0
+                    rate:
+                      type: integer
+                      minimum: 0
+                    unit:
+                      type: string
+                      oneOf:
+                        - const: pps
+
+  /api/qos/port/sched/get:
+    post:
+      summary: Get the QoS schedule of a port
+      tags:
+        - qos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+
+  /api/qos/port/sched/set:
+    post:
+      summary: Set the QoS schedule of a port
+      tags:
+        - qos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+                mode:
+                  type: integer
+                  oneOf:
+                    - const: 0
+                    - const: 1
+                rrweights:
+                  type: array
+                  maxItems: 8
+                  items:
+                    type: integer
+                    minimum: 1
+                    maximum: 128
+
+  /api/session/login:
+    post:
+      summary: Log in to the device
+      tags:
+        - session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user: string
+                password: string
+
+  /api/session/logout:
+    post:
+      summary: Log out of the device
+      tags:
+        - session
+
+  /api/sntp/get:
+    post:
+      summary: Get the SNTP configuration
+      tags:
+        - sntp
+
+  /api/sntp/set:
+    post:
+      summary: Set the SNTP configuration
+      tags:
+        - snp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                stale:
+                  type: integer
+                  oneOf:
+                    - const: 0
+                    - const: 1
+                  default: 0
+                poll:
+                  type: integer
+                  minimum: 0
+                ipv4:
+                  type: string
+                  format: ipv4
+                tz:
+                  type: integer
+                  minimum: 0
+
+  /api/storm/get:
+    post:
+      summary: Get the broadcast configuration
+      tags:
+        - storm
+
+  /api/storm/set:
+    post:
+      summary: Set the broadcast configuration
+      tags:
+        - storm
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                unicast:
+                  type: object
+                  properties:
+                    admin:
+                      type: integer
+                      minimum: 0
+                    meas:
+                      type: object
+                multicast:
+                  type: object
+                  properties:
+                    admin:
+                      type: integer
+                      minimum: 0
+                    meas:
+                      type: object
+                broadcast:
+                  type: object
+                  properties:
+                    admin:
+                      type: integer
+                      minimum: 0
+                    meas:
+                      type: object
+
+  /api/system/led/set:
+    post:
+      summary: Set the device LED state
+      tags:
+        - system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                led_offset:
+                  type: integer
+                  minimum: 0
+                value:
+                  type: integer
+                  minimum: 0
+
+  /api/system/logintime/set:
+    post:
+      summary: Set the timeout for users to log in
+      tags:
+        - system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                can_logintime:
+                  type: integer
+                  minimum: 0
+
+  /api/system/loopmode/set:
+    post:
+      summary: Set the device loopback detection
+      tags:
+        - system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                loopback_mode:
+                  type: integer
+                  oneOf:
+                    - const: 0
+                    - const: 1
+
+  /api/system/macaddr/set:
+    post:
+      summary: Set the device MAC address
+      tags:
+        - system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mac_addr:
+                  type: string
+                  pattern: ^([0-9A-Fa-f]{2}:){5}([0-9A-Fa-f]{2})$
+
+  /api/system/microled/set:
+    post:
+      summary: Set the device microled configuration
+      tags:
+        - system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                led_mode:
+                  type: integer
+                  minimum: 0
+
+  /api/system/params/get:
+    post:
+      summary: Get the device parameters
+      tags:
+        - system
+
+  /api/system/params/set:
+    post:
+      summary: Set the device parameters
+      tags:
+        - system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cfg_descr:
+                  type: string
+                  maxLength: 64
+                dev_id:
+                  type: string
+                  maxLength: 32
+                dev_name:
+                  type: string
+                  maxLength: 32
+                dev_loc:
+                  type: string
+                  maxLength: 32
+                dev_desc:
+                  type: string
+                  maxLength: 32
+                dhcpv4:
+                  type: integer
+                  oneOf:
+                    - const: 0
+                    - const: 1
+                ssl:
+                  type: integer
+                  oneOf:
+                    - const: 0
+                    - const: 1
+                l2Agetime:
+                  type: integer
+                  minimum: 0
+                sessTTL:
+                  type: integer
+                  minimum: 0
+                  description: in minutes
+                ipv4:
+                  type: string
+                  format: ipv4
+                subnet:
+                  type: string
+                  format: ipv4
+                gw:
+                  type: string
+                  format: ipv4
+
+  /api/system/password/set:
+    post:
+      summary: Change the device password
+      tags:
+        - system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                pwd:
+                  type: string
+                new_pwd:
+                  type: string
+
+  /api/system/phy_fw_ver/get:
+    post:
+      summary: Get the device firmware version
+      tags:
+        - system
+
+  /api/system/reboot:
+    post:
+      summary: Reboot the device
+      tags:
+        - system
+
+  /api/system/serial_number/set:
+    post:
+      summary: Set the device serial number
+      tags:
+        - system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                serial_number:
+                  type: string
+
+  /api/system/stop_ip/set:
+    post:
+      summary: Stop the device listening
+      tags:
+        - system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                stop_ip:
+                  type: integer
+                  oneOf:
+                    - const: 0
+                    - const: 1
+
+  /api/system/sysloop_led/set:
+    post:
+      summary: Set the system loop LED
+      tags:
+        - system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                system_loop_led:
+                  type: integer
+                  oneOf:
+                    - const: 0
+                    - const: 1
+
+  /api/system/testmode/set:
+    post:
+      summary: Set the device test mode
+      tags:
+        - system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                test_mode:
+                  type: integer
+                  minimum: 0
+
+  /api/user/detete:
+    post:
+      summary: Delete a user
+      tags:
+        - user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: string
+
+  /api/user/get:
+    post:
+      summary: Get a list of users
+      tags:
+        - user
+
+  /api/user/set:
+    post:
+      summary: Set user configuration
+      tags:
+        - user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                add:
+                  type: integer
+                  minimum: 0
+                user:
+                  type: string
+                pass:
+                  type: string
+
+  /api/vlan/create:
+    post:
+      summary: Create a VLAN
+      tags:
+        - vlan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                vlan:
+                  type: integer
+                  minimum: 0
+
+  /api/vlan/delete:
+    post:
+      summary: Delete a VLAN
+      tags:
+        - vlan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                vlan:
+                  type: integer
+                  minimum: 0
+
+  /api/vlan/get:
+    post:
+      summary: Get a VLAN or VLANs
+      tags:
+        - vlan
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                vlan:
+                  type: integer
+                  minimum: 0
+
+  /api/vlan/mode/get:
+    post:
+      summary: Get the VLAN modes
+      tags:
+        - vlan
+
+  /api/vlan/mode/set:
+    post:
+      summary: Set the VLAN modes
+      tags:
+        - vlan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mode:
+                  type: integer
+                  minimum: 0
+
+  /api/vlan/port/get:
+    post:
+      summary: Get VLAN configuration of a port
+      tags:
+        - vlan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+
+  /api/vlan/port/set:
+    post:
+      summary: Set the VLAN configuration of a port
+      tags:
+        - vlan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                port:
+                  type: integer
+                  minimum: 0
+                accept:
+                  type: integer
+                  minimum: 0
+                pvid:
+                  type: integer
+                  minimum: 0
+
+  /api/vlan/set:
+    post:
+      summary: Set VLAN membership
+      tags:
+        - vlan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                vlan:
+                  type: integer
+                  minimum: 0
+                membership:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      interface:
+                        type: integer
+                        minimum: 0
+                      mbr:
+                        type: integer
+                        oneOf:
+                          - title: Disable
+                            const: 0
+                          - title: Untagged
+                            const: 1
+                          - title: Tagged
+                            const: 2
+
+  /api/session_check:
+    post:
+      summary: Check the session
+      tags:
+        - session
+
+servers:
+  - url: http:/api//{ip}/
+    description: Default switch URL
+    variables:
+      ip:
+        default: 1.1.1.100
