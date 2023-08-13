@@ -1,6 +1,14 @@
 ---
 
 openapi: 3.1.0
+
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: mgs
+
 info:
   title: QNAP API
   version: 0.0.1
@@ -9,6 +17,8 @@ paths:
   /api/autovoip/oui/create:
     post:
       summary: Add an AutoVOIP OUI
+      security:
+        - cookieAuth: []
       tags:
         - autovoip
       requestBody:
@@ -24,6 +34,8 @@ paths:
   /api/autovoip/oui/delete:
     post:
       summary: Delete an AutoVOIP OUI
+      security:
+        - cookieAuth: []
       tags:
         - autovoip
       requestBody:
@@ -39,18 +51,24 @@ paths:
   /api/autovoip/oui/get:
     post:
       summary: Get the AutoVOIP OUI
+      security:
+        - cookieAuth: []
       tags:
         - autovoip
 
   /api/autovoip/state/get:
     post:
       summary: Get the AutoVOIP state
+      security:
+        - cookieAuth: []
       tags:
         - autovoip
 
   /api/autovoip/state/set:
     post:
       summary: Set the AutoVOIP state
+      security:
+        - cookieAuth: []
       tags:
         - autovoip
       requestBody:
@@ -67,12 +85,24 @@ paths:
   /api/cfg/default:
     post:
       summary: Get the default configuration
+      security:
+        - cookieAuth: []
+      tags:
+        - cfg
+
+  /api/cfgg/save:
+    post:
+      summary: Save the current configuration
+      security:
+        - cookieAuth: []
       tags:
         - cfg
 
   /api/cfg/upload:
     post:
       summary: Upload a new configuration
+      security:
+        - cookieAuth: []
       tags:
         - cfg
       requestBody:
@@ -85,18 +115,24 @@ paths:
   /api/cfg/validate:
     post:
       summary: Validate the current configuration
+      security:
+        - cookieAuth: []
       tags:
         - cfg
 
   /api/dos/get:
     post:
       summary: Get the DoS configuration
+      security:
+        - cookieAuth: []
       tags:
         - dos
 
   /api/dos/set:
     post:
-      summary: Set the DoS configuratoin
+      summary: Set the DoS configuration
+      security:
+        - cookieAuth: []
       tags:
         - dos
       requestBody:
@@ -149,18 +185,24 @@ paths:
   /api/fw/data/get:
     post:
       summary: Get the firmware data
+      security:
+        - cookieAuth: []
       tags:
         - fw
 
   /api/fw/image/toggle:
     post:
       summary: Toggle the firmware image
+      security:
+        - cookieAuth: []
       tags:
         - fw
 
   /api/fw/upload:
     post:
       summary: Upload a new firmware
+      security:
+        - cookieAuth: []
       tags:
         - fw
       requestBody:
@@ -173,6 +215,8 @@ paths:
   /api/fw/version/set:
     post:
       summary: Set the firmware version
+      security:
+        - cookieAuth: []
       tags:
         - fw
       requestBody:
@@ -188,6 +232,8 @@ paths:
   /api/host/add:
     post:
       summary: Add a host
+      security:
+        - cookieAuth: []
       tags:
         - host
       requestBody:
@@ -208,6 +254,8 @@ paths:
   /api/host/delete:
     post:
       summary: Delete a host
+      security:
+        - cookieAuth: []
       tags:
         - host
       requestBody:
@@ -228,12 +276,16 @@ paths:
   /api/host/get:
     post:
       summary: Get a host
+      security:
+        - cookieAuth: []
       tags:
         - host
 
   /api/host/state/set:
     post:
       summary: Set a host state
+      security:
+        - cookieAuth: []
       tags:
         - host
       requestBody:
@@ -250,18 +302,24 @@ paths:
   /api/intf/list/get:
     post:
       summary: Get a list of interfaces
+      security:
+        - cookieAuth: []
       tags:
         - intf
 
   /api/l2/table/count/get:
     post:
       summary: Get the L2 count table
+      security:
+        - cookieAuth: []
       tags:
         - l2
 
   /api/l2/table/get:
     post:
       summary: Get the L2 table
+      security:
+        - cookieAuth: []
       tags:
         - l2
       requestBody:
@@ -281,6 +339,8 @@ paths:
   /api/lag/create:
     post:
       summary: Create a link aggregation
+      security:
+        - cookieAuth: []
       tags:
         - lag
       requestBody:
@@ -300,6 +360,8 @@ paths:
   /api/lag/delete:
     post:
       summary: Delete a link aggregation
+      security:
+        - cookieAuth: []
       tags:
         - lag
       requestBody:
@@ -317,6 +379,8 @@ paths:
   /api/lag/get:
     post:
       summary: Get a link aggregation
+      security:
+        - cookieAuth: []
       tags:
         - lag
       requestBody:
@@ -333,12 +397,16 @@ paths:
   /api/lag/hash/get:
     post:
       summary: Get a link aggregation hash
+      security:
+        - cookieAuth: []
       tags:
         - lag
 
   /api/lag/hash/set:
     post:
       summary: Set a link aggregation hash
+      security:
+        - cookieAuth: []
       tags:
         - lag
       requestBody:
@@ -359,6 +427,8 @@ paths:
   /api/lag/intf/set:
     post:
       summary: Set a link aggregation interface
+      security:
+        - cookieAuth: []
       tags:
         - lag
       requestBody:
@@ -380,18 +450,24 @@ paths:
   /api/lag/portmap/get:
     post:
       summary: Get the link aggregation port map
+      security:
+        - cookieAuth: []
       tags:
         - lag
 
   /api/lbd/global/get:
     post:
       summary: Get the global loopback detection state
+      security:
+        - cookieAuth: []
       tags:
         - lbd
 
   /api/lbd/global/set:
     post:
       summary: Set the global loopback detection state
+      security:
+        - cookieAuth: []
       tags:
         - lbd
       requestBody:
@@ -414,12 +490,16 @@ paths:
   /api/lbd/port/get:
     post:
       summary: Get the loopback detection state of a port
+      security:
+        - cookieAuth: []
       tags:
         - lbd
 
   /api/lbd/port/set:
     post:
       summary: Set the loopback detection state of a port
+      security:
+        - cookieAuth: []
       tags:
         - lbd
       requestBody:
@@ -445,18 +525,24 @@ paths:
   /api/mirror/delete:
     post:
       summary: Delete a port mirror
+      security:
+        - cookieAuth: []
       tags:
         - mirror
 
   /api/mirror/get:
     post:
       summary: Get a port mirror
+      security:
+        - cookieAuth: []
       tags:
         - mirror
 
   /api/mirror/set:
     post:
       summary: Set a port mirror
+      security:
+        - cookieAuth: []
       tags:
         - mirror
       requestBody:
@@ -493,7 +579,9 @@ paths:
 
   /api/port/admin/get:
     post:
-      summary: Get the Admin port?
+      summary: Get the admin state of a port
+      security:
+        - cookieAuth: []
       tags:
         - port
       requestBody:
@@ -510,6 +598,8 @@ paths:
   /api/port/get:
     post:
       summary: Get a port
+      security:
+        - cookieAuth: []
       tags:
         - port
       requestBody:
@@ -526,6 +616,8 @@ paths:
   /api/port/link/state/get:
     post:
       summary: Get the link state of a port
+      security:
+        - cookieAuth: []
       tags:
         - port
       requestBody:
@@ -542,12 +634,16 @@ paths:
   /api/port/list/get:
     post:
       summary: Get a list of the ports
+      security:
+        - cookieAuth: []
       tags:
         - port
 
   /api/port/phys/type/get:
     post:
       summary: Get the physical type of a port
+      security:
+        - cookieAuth: []
       tags:
         - port
       requestBody:
@@ -564,6 +660,8 @@ paths:
   /api/port/set:
     post:
       summary: Set the port details
+      security:
+        - cookieAuth: []
       tags:
         - port
       requestBody:
@@ -601,6 +699,8 @@ paths:
   /api/port/speed/max/get:
     post:
       summary: Get the maximum speed of a port
+      security:
+        - cookieAuth: []
       tags:
         - port
       requestBody:
@@ -618,6 +718,8 @@ paths:
   /api/port/stats_err/get:
     post:
       summary: Get the stats/errors of a port
+      security:
+        - cookieAuth: []
       tags:
         - port
       requestBody:
@@ -635,6 +737,8 @@ paths:
   /api/port/stats_rst/set:
     post:
       summary: Reset the stats of a port
+      security:
+        - cookieAuth: []
       tags:
         - port
       requestBody:
@@ -650,7 +754,9 @@ paths:
 
   /api/port/stats/clear:
     post:
-      summary: tba
+      summary: Clear the stats of a port / ports
+      security:
+        - cookieAuth: []
       tags:
         - port
       requestBody:
@@ -669,6 +775,8 @@ paths:
   /api/port/stats/get:
     post:
       summary: Get the stats of a port / ports
+      security:
+        - cookieAuth: []
       tags:
         - port
       requestBody:
@@ -686,6 +794,8 @@ paths:
   /api/qos/dot1p/mapping/get:
     post:
       summary: Get the 802.1p QoS mappings
+      security:
+        - cookieAuth: []
       tags:
         - qos
       requestBody:
@@ -702,6 +812,8 @@ paths:
   /api/qos/dot1p/mapping/set:
     post:
       summary: Set the 802.1p QoS mappings
+      security:
+        - cookieAuth: []
       tags:
         - qos
       requestBody:
@@ -720,12 +832,16 @@ paths:
   /api/qos/dscp/mapping/get:
     post:
       summary: Get the 802.1p QoS mappings
+      security:
+        - cookieAuth: []
       tags:
         - qos
 
   /api/qos/dscp/mapping/set:
     post:
       summary: Set the DSCP QoS mappings
+      security:
+        - cookieAuth: []
       tags:
         - qos
       requestBody:
@@ -741,9 +857,11 @@ paths:
 
   /api/qos/port/ratelimit/get:
     post:
+      summary: Get the rate limit of a port
+      security:
+        - cookieAuth: []
       tags:
         - qos
-      summary: Get the rate limit of a port
       requestBody:
         required: true
         content:
@@ -758,6 +876,8 @@ paths:
   /api/qos/port/ratelimit/set:
     post:
       summary: Set the rate limit of a port
+      security:
+        - cookieAuth: []
       tags:
         - qos
       requestBody:
@@ -800,6 +920,8 @@ paths:
   /api/qos/port/sched/get:
     post:
       summary: Get the QoS schedule of a port
+      security:
+        - cookieAuth: []
       tags:
         - qos
       requestBody:
@@ -816,6 +938,8 @@ paths:
   /api/qos/port/sched/set:
     post:
       summary: Set the QoS schedule of a port
+      security:
+        - cookieAuth: []
       tags:
         - qos
       requestBody:
@@ -865,12 +989,16 @@ paths:
   /api/sntp/get:
     post:
       summary: Get the SNTP configuration
+      security:
+        - cookieAuth: []
       tags:
         - sntp
 
   /api/sntp/set:
     post:
       summary: Set the SNTP configuration
+      security:
+        - cookieAuth: []
       tags:
         - snp
       requestBody:
@@ -899,12 +1027,16 @@ paths:
   /api/storm/get:
     post:
       summary: Get the broadcast configuration
+      security:
+        - cookieAuth: []
       tags:
         - storm
 
   /api/storm/set:
     post:
       summary: Set the broadcast configuration
+      security:
+        - cookieAuth: []
       tags:
         - storm
       requestBody:
@@ -942,6 +1074,8 @@ paths:
   /api/system/led/set:
     post:
       summary: Set the device LED state
+      security:
+        - cookieAuth: []
       tags:
         - system
       requestBody:
@@ -961,6 +1095,8 @@ paths:
   /api/system/logintime/set:
     post:
       summary: Set the timeout for users to log in
+      security:
+        - cookieAuth: []
       tags:
         - system
       requestBody:
@@ -977,6 +1113,8 @@ paths:
   /api/system/loopmode/set:
     post:
       summary: Set the device loopback detection
+      security:
+        - cookieAuth: []
       tags:
         - system
       requestBody:
@@ -995,6 +1133,8 @@ paths:
   /api/system/macaddr/set:
     post:
       summary: Set the device MAC address
+      security:
+        - cookieAuth: []
       tags:
         - system
       requestBody:
@@ -1011,6 +1151,8 @@ paths:
   /api/system/microled/set:
     post:
       summary: Set the device microled configuration
+      security:
+        - cookieAuth: []
       tags:
         - system
       requestBody:
@@ -1027,12 +1169,16 @@ paths:
   /api/system/params/get:
     post:
       summary: Get the device parameters
+      security:
+        - cookieAuth: []
       tags:
         - system
 
   /api/system/params/set:
     post:
       summary: Set the device parameters
+      security:
+        - cookieAuth: []
       tags:
         - system
       requestBody:
@@ -1087,6 +1233,8 @@ paths:
   /api/system/password/set:
     post:
       summary: Change the device password
+      security:
+        - cookieAuth: []
       tags:
         - system
       requestBody:
@@ -1104,18 +1252,24 @@ paths:
   /api/system/phy_fw_ver/get:
     post:
       summary: Get the device firmware version
+      security:
+        - cookieAuth: []
       tags:
         - system
 
   /api/system/reboot:
     post:
       summary: Reboot the device
+      security:
+        - cookieAuth: []
       tags:
         - system
 
   /api/system/serial_number/set:
     post:
       summary: Set the device serial number
+      security:
+        - cookieAuth: []
       tags:
         - system
       requestBody:
@@ -1131,6 +1285,8 @@ paths:
   /api/system/stop_ip/set:
     post:
       summary: Stop the device listening
+      security:
+        - cookieAuth: []
       tags:
         - system
       requestBody:
@@ -1149,6 +1305,8 @@ paths:
   /api/system/sysloop_led/set:
     post:
       summary: Set the system loop LED
+      security:
+        - cookieAuth: []
       tags:
         - system
       requestBody:
@@ -1167,6 +1325,8 @@ paths:
   /api/system/testmode/set:
     post:
       summary: Set the device test mode
+      security:
+        - cookieAuth: []
       tags:
         - system
       requestBody:
@@ -1183,6 +1343,8 @@ paths:
   /api/user/detete:
     post:
       summary: Delete a user
+      security:
+        - cookieAuth: []
       tags:
         - user
       requestBody:
@@ -1198,12 +1360,16 @@ paths:
   /api/user/get:
     post:
       summary: Get a list of users
+      security:
+        - cookieAuth: []
       tags:
         - user
 
   /api/user/set:
     post:
       summary: Set user configuration
+      security:
+        - cookieAuth: []
       tags:
         - user
       requestBody:
@@ -1224,6 +1390,8 @@ paths:
   /api/vlan/create:
     post:
       summary: Create a VLAN
+      security:
+        - cookieAuth: []
       tags:
         - vlan
       requestBody:
@@ -1240,6 +1408,8 @@ paths:
   /api/vlan/delete:
     post:
       summary: Delete a VLAN
+      security:
+        - cookieAuth: []
       tags:
         - vlan
       requestBody:
@@ -1256,6 +1426,8 @@ paths:
   /api/vlan/get:
     post:
       summary: Get a VLAN or VLANs
+      security:
+        - cookieAuth: []
       tags:
         - vlan
       requestBody:
@@ -1272,12 +1444,16 @@ paths:
   /api/vlan/mode/get:
     post:
       summary: Get the VLAN modes
+      security:
+        - cookieAuth: []
       tags:
         - vlan
 
   /api/vlan/mode/set:
     post:
       summary: Set the VLAN modes
+      security:
+        - cookieAuth: []
       tags:
         - vlan
       requestBody:
@@ -1294,6 +1470,8 @@ paths:
   /api/vlan/port/get:
     post:
       summary: Get VLAN configuration of a port
+      security:
+        - cookieAuth: []
       tags:
         - vlan
       requestBody:
@@ -1310,6 +1488,8 @@ paths:
   /api/vlan/port/set:
     post:
       summary: Set the VLAN configuration of a port
+      security:
+        - cookieAuth: []
       tags:
         - vlan
       requestBody:
@@ -1332,6 +1512,8 @@ paths:
   /api/vlan/set:
     post:
       summary: Set VLAN membership
+      security:
+        - cookieAuth: []
       tags:
         - vlan
       requestBody:
@@ -1365,6 +1547,8 @@ paths:
   /api/session_check:
     post:
       summary: Check the session
+      security:
+        - cookieAuth: []
       tags:
         - session
 
